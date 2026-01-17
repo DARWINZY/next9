@@ -49,7 +49,7 @@ a{color:inherit; text-decoration:none}
   box-shadow: 0 18px 36px rgba(225,29,46,.25);
 }
 
-/* --- Nav --- */
+/* Desktop nav */
 .nav{
   display:flex; align-items:center; gap:8px;
   flex-wrap:wrap;
@@ -61,7 +61,11 @@ a{color:inherit; text-decoration:none}
   font-weight:700;
 }
 .nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-.nav a.active{color:var(--text); background:rgba(225,29,46,.18); border:1px solid rgba(225,29,46,.35)}
+.nav a.active{
+  color:var(--text);
+  background:rgba(225,29,46,.18);
+  border:1px solid rgba(225,29,46,.35);
+}
 
 /* Mobile menu button */
 .menu-btn{
@@ -82,6 +86,7 @@ a{color:inherit; text-decoration:none}
   background: rgba(11,11,15,.72);
 }
 .mobile-nav.open{display:block}
+.mobile-nav .container{padding:0 16px}
 .mobile-nav .nav{
   display:grid;
   gap:8px;
@@ -212,18 +217,17 @@ h1{
 .toast.show{display:block}
 code{color:#ffd7d7}
 
-/* --- Responsive tweaks --- */
+/* Responsive */
 @media (max-width: 900px){
   .grid-hero{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
 }
 
-/* Mobile breakpoint: hide top nav, show burger */
+/* Mobile: hide desktop nav, show burger + full width buttons */
 @media (max-width: 720px){
-  .topbar-inner{padding:10px 0}
-  .pill{display:none} /* เอาออกเพื่อให้ header โปร่งบนมือถือ */
+  .pill{display:none}
   .nav{display:none}
   .menu-btn{display:inline-flex; align-items:center; justify-content:center}
   .pad{padding:16px}
-  .btn{width:100%; justify-content:center} /* ปุ่มเต็มแถว กดง่าย */
+  .btn{width:100%; justify-content:center}
 }

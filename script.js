@@ -1,4 +1,4 @@
-// Active nav ตามหน้า
+// Active nav ตามชื่อไฟล์หน้า
 (() => {
   const path = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav a").forEach(a => {
@@ -18,10 +18,10 @@ function toast(msg){
   toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
 }
 
-// Copy link
 document.addEventListener("click", async (e) => {
-  const btn = e.target.closest("[data-copy-link]");
-  if(btn){
+  // Copy link
+  const copyBtn = e.target.closest("[data-copy-link]");
+  if(copyBtn){
     try{
       await navigator.clipboard.writeText(location.href);
       toast("คัดลอกลิงก์แล้ว ✅");

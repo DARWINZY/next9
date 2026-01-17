@@ -11,21 +11,29 @@
     <div class="container">
       <div class="topbar-inner">
         <a class="brand" href="index.html"><span class="badge"></span><span>next9</span></a>
-        <nav class="nav">
+
+        <nav class="nav" aria-label="primary">
           <a href="index.html">หน้าแรก</a>
           <a href="candidates.html">ผู้สมัคร</a>
           <a href="policies.html">นโยบาย</a>
           <a href="events.html">กิจกรรม</a>
           <a href="contact.html">ติดต่อ</a>
         </nav>
-        <button class="menu-btn"
-          data-menu-btn
-          aria-expanded="false"
-          aria-controls="mobileNav"
-          aria-label="เปิดเมนู">
-          ☰
-         </button>
+
+        <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="mobileNav" aria-label="เปิดเมนู">☰</button>
         <span class="pill">Contact</span>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <div class="container">
+          <nav class="nav" aria-label="mobile">
+            <a href="index.html">หน้าแรก</a>
+            <a href="candidates.html">ผู้สมัคร</a>
+            <a href="policies.html">นโยบาย</a>
+            <a href="events.html">กิจกรรม</a>
+            <a href="contact.html">ติดต่อ</a>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -63,9 +71,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <span class="pill">next9 • Contact</span>
-    </div>
+    <div class="container"><span class="pill">next9 • Contact</span></div>
   </footer>
 
   <div class="toast" id="toast"></div>

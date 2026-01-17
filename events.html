@@ -11,21 +11,29 @@
     <div class="container">
       <div class="topbar-inner">
         <a class="brand" href="index.html"><span class="badge"></span><span>next9</span></a>
-        <nav class="nav">
+
+        <nav class="nav" aria-label="primary">
           <a href="index.html">หน้าแรก</a>
           <a href="candidates.html">ผู้สมัคร</a>
           <a href="policies.html">นโยบาย</a>
           <a href="events.html">กิจกรรม</a>
           <a href="contact.html">ติดต่อ</a>
         </nav>
-        <button class="menu-btn"
-          data-menu-btn
-          aria-expanded="false"
-          aria-controls="mobileNav"
-          aria-label="เปิดเมนู">
-          ☰
-         </button>
+
+        <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="mobileNav" aria-label="เปิดเมนู">☰</button>
         <span class="pill">Events</span>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <div class="container">
+          <nav class="nav" aria-label="mobile">
+            <a href="index.html">หน้าแรก</a>
+            <a href="candidates.html">ผู้สมัคร</a>
+            <a href="policies.html">นโยบาย</a>
+            <a href="events.html">กิจกรรม</a>
+            <a href="contact.html">ติดต่อ</a>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -44,15 +52,18 @@
             <li class="li"><strong>กิจกรรม 2</strong><span>วันที่/เวลา • สถานที่</span></li>
             <li class="li"><strong>กิจกรรม 3</strong><span>วันที่/เวลา • สถานที่</span></li>
           </ul>
+
+          <div class="cta-row" style="margin-top:12px">
+            <a class="btn btn-primary" href="contact.html">ติดต่อพรรค</a>
+            <button class="btn btn-ghost" data-copy-link>คัดลอกลิงก์หน้านี้</button>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <span class="pill">next9 • Events</span>
-    </div>
+    <div class="container"><span class="pill">next9 • Events</span></div>
   </footer>
 
   <div class="toast" id="toast"></div>
