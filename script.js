@@ -1,4 +1,4 @@
-// Active nav ตามชื่อไฟล์หน้า
+// Highlight active nav link based on current file
 (() => {
   const path = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav a").forEach(a => {
@@ -15,22 +15,11 @@ function toast(msg){
   toastEl.textContent = msg;
   toastEl.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2000);
 }
 
+// Click handlers
 document.addEventListener("click", async (e) => {
-  // Copy link
-  const copyBtn = e.target.closest("[data-copy-link]");
-  if(copyBtn){
-    try{
-      await navigator.clipboard.writeText(location.href);
-      toast("คัดลอกลิงก์แล้ว ✅");
-    }catch{
-      toast("คัดลอกไม่สำเร็จ ลองคัดลอกเองจากแถบ URL");
-    }
-    return;
-  }
-
   // Mobile menu toggle
   const menuBtn = e.target.closest("[data-menu-btn]");
   if(menuBtn){
@@ -41,12 +30,24 @@ document.addEventListener("click", async (e) => {
     return;
   }
 
-  // ปิดเมนูเมื่อกดลิงก์ในเมนูมือถือ
+  // Close mobile nav when clicking a link inside it
   const navLink = e.target.closest("#mobileNav a");
   if(navLink){
     const panel = document.getElementById("mobileNav");
     const btn2 = document.querySelector("[data-menu-btn]");
     panel.classList.remove("open");
     if(btn2) btn2.setAttribute("aria-expanded", "false");
+    return;
+  }
+
+  // Copy link
+  const copyBtn = e.target.closest("[data-copy-link]");
+  if(copyBtn){
+    try{
+      await navigator.clipboard.writeText(location.href);
+      toast("คัดลอกลิงก์แล้ว ✅");
+    }catch{
+      toast("คัดลอกไม่สำเร็จ");
+    }
   }
 });

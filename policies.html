@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ผู้สมัคร • next9</title>
+  <title>นโยบาย • next9</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="index.html"><span class="badge"></span><span>next9</span></a>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">n9</span>
+          <span>next9</span>
+        </a>
 
         <nav class="nav" aria-label="primary">
           <a href="index.html">หน้าแรก</a>
@@ -21,19 +24,16 @@
         </nav>
 
         <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="mobileNav" aria-label="เปิดเมนู">☰</button>
-        <span class="pill">ทีมผู้สมัคร</span>
       </div>
 
       <div class="mobile-nav" id="mobileNav">
-        <div class="container">
-          <nav class="nav" aria-label="mobile">
-            <a href="index.html">หน้าแรก</a>
-            <a href="candidates.html">ผู้สมัคร</a>
-            <a href="policies.html">นโยบาย</a>
-            <a href="events.html">กิจกรรม</a>
-            <a href="contact.html">ติดต่อ</a>
-          </nav>
-        </div>
+        <nav class="nav" aria-label="mobile">
+          <a href="index.html">หน้าแรก</a>
+          <a href="candidates.html">ผู้สมัคร</a>
+          <a href="policies.html">นโยบาย</a>
+          <a href="events.html">กิจกรรม</a>
+          <a href="contact.html">ติดต่อ</a>
+        </nav>
       </div>
     </div>
   </div>
@@ -41,37 +41,49 @@
   <main class="section">
     <div class="container">
       <div class="section-title">
-        <h2>ผู้สมัคร</h2>
-        <div class="hint">แก้ชื่อ/ตำแหน่งตามจริง</div>
+        <h2>นโยบาย</h2>
+        <span class="hint">เขียนสั้น ชัด วัดผลได้</span>
       </div>
 
       <div class="grid3">
         <div class="item">
-          <span class="tag">หัวหน้าพรรค</span>
-          <h3>ชื่อ-สกุล</h3>
-          <p>คำแนะนำตัวสั้น ๆ / จุดเด่น</p>
+          <span class="tag red">1</span>
+          <h3>นโยบายที่ 1</h3>
+          <p>อธิบาย 1–2 บรรทัด + ผลลัพธ์ที่อยากให้เกิด</p>
         </div>
         <div class="item">
-          <span class="tag">รองหัวหน้า</span>
-          <h3>ชื่อ-สกุล</h3>
-          <p>คำแนะนำตัวสั้น ๆ / จุดเด่น</p>
+          <span class="tag red">2</span>
+          <h3>นโยบายที่ 2</h3>
+          <p>อธิบาย 1–2 บรรทัด + วิธีทำคร่าว ๆ</p>
         </div>
         <div class="item">
-          <span class="tag">ฝ่ายกิจกรรม</span>
-          <h3>ชื่อ-สกุล</h3>
-          <p>คำแนะนำตัวสั้น ๆ / จุดเด่น</p>
+          <span class="tag red">3</span>
+          <h3>นโยบายที่ 3</h3>
+          <p>อธิบาย 1–2 บรรทัด + ใครได้ประโยชน์</p>
         </div>
       </div>
 
-      <div class="cta-row" style="margin-top:12px">
-        <a class="btn btn-primary" href="policies.html">ดูนโยบาย</a>
-        <button class="btn btn-ghost" data-copy-link>คัดลอกลิงก์หน้านี้</button>
+      <div class="card" style="margin-top:12px">
+        <div class="pad">
+          <div class="section-title">
+            <h2>Roadmap (ตัวอย่าง)</h2>
+            <span class="hint">ทำงานเป็นขั้นตอน</span>
+          </div>
+          <ul class="list">
+            <li class="li"><strong>เดือน 1</strong><span>เก็บปัญหา + คัดเรื่องเร่งด่วน</span></li>
+            <li class="li"><strong>เดือน 2</strong><span>เริ่มโครงการที่ทำได้ทันที</span></li>
+            <li class="li"><strong>เดือน 3</strong><span>สรุปผล + ปรับตามฟีดแบ็ก</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="container"><span class="pill">next9 • Candidates</span></div>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <span>© next9</span>
+      <button class="btn btn-ghost" data-copy-link>คัดลอกลิงก์หน้านี้</button>
+    </div>
   </footer>
 
   <div class="toast" id="toast"></div>
