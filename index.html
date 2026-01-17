@@ -2,343 +2,61 @@
 <html lang="th">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Homepage</title>
-  <meta name="description" content="Homepage demo: HTML + CSS + JS (Deploy ได้บน Cloudflare Pages/Netlify)" />
-
-  <style>
-    :root{
-      --bg:#0b0d12;
-      --panel:#111523;
-      --text:#e9ecf5;
-      --muted:#aab1c5;
-      --line:rgba(255,255,255,.08);
-      --accent:#7c5cff;
-      --accent2:#30c8c9;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1040px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Thai", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(124,92,255,.35), transparent 55%),
-        radial-gradient(900px 500px at 85% 0%, rgba(48,200,201,.28), transparent 45%),
-        radial-gradient(900px 700px at 50% 120%, rgba(124,92,255,.18), transparent 55%),
-        var(--bg);
-      line-height:1.5;
-    }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,13,18,.55);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; letter-spacing:.2px;
-    }
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent));
-      box-shadow: 0 10px 24px rgba(124,92,255,.25);
-    }
-    .nav{
-      display:flex; align-items:center; gap:14px;
-      flex-wrap:wrap;
-    }
-    .nav a{
-      padding:8px 10px;
-      border-radius:12px;
-      color:var(--muted);
-    }
-    .nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:13px;
-    }
-    /* Hero */
-    header.hero{padding:44px 0 22px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-    }
-    .card{
-      border:1px solid var(--line);
-      background: rgba(17,21,35,.62);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .card-pad{padding:22px}
-    .h1{
-      font-size: clamp(28px, 4vw, 44px);
-      line-height:1.08;
-      margin:0 0 12px;
-      letter-spacing:.2px;
-    }
-    .lead{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size: 16px;
-      max-width: 62ch;
-    }
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      appearance:none; border:0; cursor:pointer;
-      padding:11px 14px;
-      border-radius: 14px;
-      font-weight:650;
-      display:inline-flex; align-items:center; gap:10px;
-      transition: transform .08s ease, filter .2s ease, background .2s ease;
-    }
-    .btn:active{transform: translateY(1px)}
-    .btn-primary{
-      color:#0b0d12;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 18px 40px rgba(124,92,255,.25);
-    }
-    .btn-ghost{
-      color:var(--text);
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--line);
-    }
-    .mini{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:16px;
-    }
-    .mini .chip{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding:12px;
-      background: rgba(255,255,255,.035);
-    }
-    .k{font-size:22px; font-weight:800; margin:0}
-    .t{margin:4px 0 0; color:var(--muted); font-size:13px}
-    /* Side panel */
-    .side{
-      display:flex; flex-direction:column; height:100%;
-    }
-    .side .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      align-self:flex-start;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .status-dot{width:8px; height:8px; border-radius:999px; background: #49f28a; box-shadow:0 0 0 6px rgba(73,242,138,.12)}
-    .side h2{margin:14px 0 6px; font-size:18px}
-    .side p{margin:0 0 14px; color:var(--muted)}
-    .list{margin:0; padding:0; list-style:none; display:grid; gap:10px}
-    .li{
-      display:flex; justify-content:space-between; gap:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .li strong{color:var(--text)}
-    /* Sections */
-    section{padding:22px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:12px; flex-wrap:wrap;
-      margin:0 0 12px;
-    }
-    .section-title h3{margin:0; font-size:18px}
-    .section-title .hint{color:var(--muted); font-size:13px}
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
-    .work{
-      padding:16px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .work .tag{
-      display:inline-flex; align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      background: rgba(255,255,255,.03);
-    }
-    .work h4{margin:10px 0 6px; font-size:16px}
-    .work p{margin:0 0 12px; color:var(--muted); font-size:13px}
-    .work a{
-      display:inline-flex; align-items:center; gap:8px;
-      color:var(--text);
-      font-weight:650;
-      font-size:13px;
-      padding:9px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-    }
-    .work a:hover{filter:brightness(1.05)}
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:10px;
-    }
-    .ph{
-      grid-column: span 4;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-      position:relative;
-      min-height: 140px;
-    }
-    @media (max-width: 920px){
-      .ph{grid-column: span 6}
-    }
-    @media (max-width: 540px){
-      .ph{grid-column: span 12}
-    }
-    .ph img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      transform: scale(1.01);
-    }
-    .ph .cap{
-      position:absolute; left:10px; bottom:10px;
-      background: rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.92);
-      padding:6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      backdrop-filter: blur(8px);
-    }
-    /* Footer */
-    footer{padding:26px 0 50px; color:var(--muted); font-size:13px}
-    .toast{
-      position: fixed;
-      left:50%;
-      bottom: 16px;
-      transform: translateX(-50%);
-      background: rgba(17,21,35,.9);
-      border: 1px solid var(--line);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      display:none;
-      z-index: 50;
-      max-width: min(560px, calc(100% - 20px));
-    }
-    .toast.show{display:block}
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>next9 • พรรคสภานักเรียนโรงเรียนสิรินธร</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <div class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="#top" aria-label="home">
-          <span class="logo" aria-hidden="true"></span>
-          <span>My UI Demo</span>
+        <a class="brand" href="index.html">
+          <span class="badge" aria-hidden="true"></span>
+          <span>next9</span>
         </a>
-
-        <nav class="nav" aria-label="primary">
-          <a href="#work">งาน</a>
-          <a href="#gallery">แกลเลอรี</a>
-          <a href="#about">เกี่ยวกับ</a>
-          <a href="#contact">ติดต่อ</a>
+        <nav class="nav">
+          <a href="index.html">หน้าแรก</a>
+          <a href="candidates.html">ผู้สมัคร</a>
+          <a href="policies.html">นโยบาย</a>
+          <a href="events.html">กิจกรรม</a>
+          <a href="contact.html">ติดต่อ</a>
         </nav>
-
-        <span class="pill" id="buildInfo">Ready</span>
+        <span class="pill">สีหลัก: แดง</span>
       </div>
     </div>
   </div>
 
-  <div id="top"></div>
-
   <header class="hero">
     <div class="container">
-      <div class="hero-grid">
+      <div class="grid-hero">
         <div class="card">
-          <div class="card-pad">
-            <div class="pill">Static Website • HTML/CSS/JS • Deploy ได้</div>
-            <h1 class="h1">หน้าแรกตัวอย่าง<br/>เอาไปลง Git แล้ว Deploy ได้ทันที</h1>
+          <div class="pad">
+            <span class="tag">พรรคสภานักเรียน • โรงเรียนสิรินธร</span>
+            <h1>next9<br/>ก้าวต่อไปของโรงเรียนที่ดีขึ้น</h1>
             <p class="lead">
-              เว็บนี้เป็นไฟล์เดียวเพื่อทดสอบระบบ: แก้โค้ด → commit → push → deploy → ส่งลิงก์ให้คนอื่นดูได้
-              เหมาะสำหรับเดโม UI, portfolio, landing page หรือโปรเจกต์นักเรียน
+              เว็บนี้เป็นเดโมสำหรับนำเสนอตัวตนพรรค ผู้สมัคร และนโยบายให้ทุกคนเข้าถึงได้ง่าย
+              (แก้ข้อความ/รูปได้ตามจริงของพรรค)
             </p>
 
             <div class="cta-row">
-              <button class="btn btn-primary" id="btnToast">ทดสอบปุ่ม</button>
-              <a class="btn btn-ghost" href="#work">ดูส่วนงาน</a>
-              <a class="btn btn-ghost" href="#gallery">ดูแกลเลอรี</a>
-            </div>
-
-            <div class="mini">
-              <div class="chip">
-                <p class="k" id="kUsers">2,000+</p>
-                <p class="t">รองรับคนเข้า (แนว static)</p>
-              </div>
-              <div class="chip">
-                <p class="k" id="kDeploy">Auto</p>
-                <p class="t">Deploy อัตโนมัติหลัง push</p>
-              </div>
+              <a class="btn btn-primary" href="policies.html">ดูนโยบาย</a>
+              <a class="btn btn-ghost" href="candidates.html">ดูผู้สมัคร</a>
+              <button class="btn btn-ghost" data-copy-link>คัดลอกลิงก์เว็บ</button>
             </div>
           </div>
         </div>
 
-        <aside class="card side">
-          <div class="card-pad">
-            <span class="badge"><span class="status-dot" aria-hidden="true"></span> Online preview ready</span>
-            <h2>Checklist ก่อน Deploy</h2>
-            <p>ถ้า repo มี <strong>index.html</strong> อยู่ root แล้ว เชื่อม Cloudflare Pages ได้เลย</p>
-
-            <ul class="list">
-              <li class="li"><strong>1)</strong> มี index.html ใน root <span>✅</span></li>
-              <li class="li"><strong>2)</strong> path รูปใช้แบบ relative <span>✅</span></li>
-              <li class="li"><strong>3)</strong> รูปไฟล์ไม่ใหญ่เกิน <span>✅</span></li>
-              <li class="li"><strong>4)</strong> push แล้ว auto deploy <span>✅</span></li>
-            </ul>
-
-            <div style="margin-top:14px">
-              <a class="btn btn-ghost" href="#about">อ่านรายละเอียด</a>
+        <aside class="card">
+          <div class="pad">
+            <div class="section-title">
+              <h2>Quick Info</h2>
+              <span class="hint">แก้ได้ในไฟล์ HTML</span>
             </div>
+            <ul class="list">
+              <li class="li"><strong>สโลแกน</strong><span>“next9 เปลี่ยนได้จริง”</span></li>
+              <li class="li"><strong>เป้าหมาย</strong><span>โรงเรียนสะดวก ปลอดภัย น่าอยู่</span></li>
+              <li class="li"><strong>จุดเด่น</strong><span>ทำงานเป็นทีม โปร่งใส</span></li>
+            </ul>
           </div>
         </aside>
       </div>
@@ -346,86 +64,44 @@
   </header>
 
   <main>
-    <section id="work">
+    <section class="section">
       <div class="container">
         <div class="section-title">
-          <h3>งาน / Sections</h3>
-          <div class="hint">แก้ข้อความตรงนี้เพื่อทดสอบการ deploy</div>
+          <h2>ไฮไลต์นโยบาย</h2>
+          <div class="hint">ตัวอย่าง 3 หัวข้อ</div>
         </div>
 
         <div class="grid3">
-          <div class="work">
-            <span class="tag">UI • Landing</span>
-            <h4>Hero + CTA</h4>
-            <p>เหมาะกับหน้าแนะนำโปรเจกต์/กิจกรรม มีปุ่มเรียก action ชัดเจน</p>
-            <a href="#contact" aria-label="go contact">ไปที่ติดต่อ →</a>
+          <div class="item">
+            <span class="tag">สะดวก</span>
+            <h3>ระบบแจ้งปัญหา/ข้อเสนอแนะ</h3>
+            <p>ช่องทางเดียวจบ แจ้งเรื่องห้องน้ำ ไฟฟ้า ความสะอาด ติดตามสถานะได้</p>
           </div>
-
-          <div class="work">
-            <span class="tag">Gallery • Media</span>
-            <h4>แกลเลอรีรูป</h4>
-            <p>รองรับรูปหลายรูปได้ (แนะนำ WebP + lazy loading)</p>
-            <a href="#gallery" aria-label="go gallery">ดูรูป →</a>
+          <div class="item">
+            <span class="tag">น่าอยู่</span>
+            <h3>พื้นที่พักผ่อนนักเรียน</h3>
+            <p>จัดมุมอ่านหนังสือ/ชาร์จแบต/นั่งรอรถ แบบเป็นระเบียบ</p>
           </div>
-
-          <div class="work">
-            <span class="tag">Docs • README</span>
-            <h4>Deploy Workflow</h4>
-            <p>แก้ไฟล์ใน VS Code → commit → push → Cloudflare Pages deploy อัตโนมัติ</p>
-            <a href="#about" aria-label="go about">อ่านเพิ่ม →</a>
+          <div class="item">
+            <span class="tag">โปร่งใส</span>
+            <h3>สรุปงานรายเดือน</h3>
+            <p>อัปเดตว่าเดือนนี้ทำอะไรไปแล้วบ้าง และเรื่องไหนกำลังดำเนินการ</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="gallery">
+    <section class="section">
       <div class="container">
-        <div class="section-title">
-          <h3>แกลเลอรี</h3>
-          <div class="hint">ใส่รูปจริง: /assets/img/... แล้วแก้ list ใน JS</div>
-        </div>
-
-        <div class="gallery" id="galleryGrid" aria-label="gallery grid">
-          <!-- JS จะเติมการ์ดรูปให้ -->
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h3>เกี่ยวกับ</h3>
-          <div class="hint">Static = แจกไฟล์ผ่าน CDN (เร็ว + รองรับคนเยอะ)</div>
-        </div>
-
         <div class="card">
-          <div class="card-pad">
-            <p style="margin:0;color:var(--muted)">
-              เว็บนี้เป็นตัวอย่าง “static site” ซึ่งเหมาะมากกับการโชว์ UI/เดโม
-              ถ้าต้องการฟีเจอร์ระดับ login / database ค่อยเพิ่ม backend ทีหลังได้
-              แต่สำหรับโจทย์ “ทุกคนเปิดดูได้” แบบนี้ใช้แค่นี้ก็พอแล้ว
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h3>ติดต่อ</h3>
-          <div class="hint">ปุ่มด้านล่างจะคัดลอกลิงก์เว็บ (หลัง deploy)</div>
-        </div>
-
-        <div class="card">
-          <div class="card-pad">
-            <div class="cta-row">
-              <button class="btn btn-primary" id="btnCopy">คัดลอกลิงก์เว็บ</button>
-              <button class="btn btn-ghost" id="btnScrollTop">กลับขึ้นบน</button>
+          <div class="pad">
+            <div class="section-title">
+              <h2>ทำไมต้องมีเว็บไซต์พรรค?</h2>
+              <div class="hint">เปิดดูได้ทุกคน</div>
             </div>
-
-            <p style="margin:12px 0 0;color:var(--muted);font-size:13px">
-              ทิป: หลัง deploy แล้ว ลิงก์จะเป็น <code>https://ชื่อโปรเจกต์.pages.dev</code> (หรือโดเมนของคุณ)
+            <p class="lead" style="margin:0">
+              เพราะอยากให้ข้อมูล “อยู่ที่เดียวครบ” ทั้งผู้สมัคร นโยบาย และกิจกรรม
+              แชร์ลิงก์ให้เพื่อนดูได้ทันที และแก้ไขอัปเดตได้ตลอด
             </p>
           </div>
         </div>
@@ -433,125 +109,16 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
-        <span>© <span id="year"></span> My UI Demo</span>
-        <span class="pill">Edit → Commit → Push → Auto Deploy</span>
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <span>© next9 • Sirindhorn School</span>
+        <span class="pill">แก้โค้ด → commit → push → เว็บอัปเดต</span>
       </div>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    // ---- Smooth scrolling for anchor links ----
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.pushState(null, "", id);
-      });
-    });
-
-    // ---- Toast helper ----
-    const toastEl = document.getElementById("toast");
-    let toastTimer = null;
-    function toast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2400);
-    }
-
-    // ---- Buttons ----
-    document.getElementById("btnToast").addEventListener("click", () => {
-      toast("ปุ่มทำงานแล้ว 🎉");
-    });
-
-    document.getElementById("btnScrollTop").addEventListener("click", () => {
-      document.getElementById("top").scrollIntoView({ behavior: "smooth" });
-    });
-
-    document.getElementById("btnCopy").addEventListener("click", async () => {
-      const url = window.location.href;
-      try{
-        await navigator.clipboard.writeText(url);
-        toast("คัดลอกลิงก์แล้ว ✅");
-      }catch{
-        toast("คัดลอกไม่สำเร็จ ลองคัดลอกเองจากแถบ URL");
-      }
-    });
-
-    // ---- Gallery (แก้ list นี้ให้เป็นรูปจริงของคุณ) ----
-    // ใส่รูปไว้ที่: /assets/img/ แล้วแก้ชื่อไฟล์ให้ตรง
-    const images = [
-      { src: "assets/img/sample-1.webp", cap: "sample-1.webp" },
-      { src: "assets/img/sample-2.webp", cap: "sample-2.webp" },
-      { src: "assets/img/sample-3.webp", cap: "sample-3.webp" },
-      { src: "assets/img/sample-4.webp", cap: "sample-4.webp" },
-      { src: "assets/img/sample-5.webp", cap: "sample-5.webp" },
-      { src: "assets/img/sample-6.webp", cap: "sample-6.webp" }
-    ];
-
-    const grid = document.getElementById("galleryGrid");
-
-    // ถ้ายังไม่มีรูปจริง ให้โชว์ placeholder สวย ๆ แทน
-    const hasRealImages = images.some(i => i.src.startsWith("assets/"));
-
-    images.forEach((img, idx) => {
-      const card = document.createElement("div");
-      card.className = "ph";
-
-      // placeholder gradient ถ้าไฟล์ยังไม่มีจริง
-      const placeholder = document.createElement("div");
-      placeholder.style.height = "100%";
-      placeholder.style.background =
-        `radial-gradient(700px 240px at 20% 10%, rgba(124,92,255,.35), transparent 60%),
-         radial-gradient(600px 240px at 80% 20%, rgba(48,200,201,.25), transparent 55%),
-         rgba(255,255,255,.03)`;
-      placeholder.style.display = "grid";
-      placeholder.style.placeItems = "center";
-      placeholder.style.color = "rgba(255,255,255,.8)";
-      placeholder.style.fontSize = "13px";
-      placeholder.style.padding = "12px";
-      placeholder.style.textAlign = "center";
-      placeholder.textContent = "วางรูปจริงใน /assets/img/\nแล้วแก้ชื่อไฟล์ใน JS";
-
-      const imageEl = document.createElement("img");
-      imageEl.alt = img.cap || ("image " + (idx + 1));
-      imageEl.loading = "lazy";
-      imageEl.decoding = "async";
-      imageEl.src = img.src;
-
-      // ถ้ารูปโหลดไม่ขึ้น ให้ fallback เป็น placeholder
-      imageEl.addEventListener("error", () => {
-        card.innerHTML = "";
-        card.appendChild(placeholder);
-        const cap = document.createElement("div");
-        cap.className = "cap";
-        cap.textContent = "missing: " + img.src;
-        card.appendChild(cap);
-      });
-
-      card.appendChild(imageEl);
-
-      const cap = document.createElement("div");
-      cap.className = "cap";
-      cap.textContent = img.cap || "image";
-      card.appendChild(cap);
-
-      grid.appendChild(card);
-    });
-
-    // ---- Small UI bits ----
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("buildInfo").textContent = "Build: " + new Date().toLocaleString("th-TH");
-
-    // ถ้าอยากให้คนรีเฟรชแล้วเห็นเวลาเปลี่ยน จะช่วยเช็กว่า deploy สำเร็จ
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
