@@ -48,10 +48,15 @@ a{color:inherit; text-decoration:none}
 .brand-mark{
   width:32px; height:32px;
   border-radius:12px;
-  background: var(--red);
+  background: transparent;   /* เปลี่ยนเป็นโปร่ง เพราะสีอยู่ใน svg แล้ว */
   display:grid; place-items:center;
-  color:white; font-weight:900;
-  font-size:14px;
+  overflow:hidden;
+}
+
+.brand-logo{
+  width:100%;
+  height:100%;
+  display:block;
 }
 
 .nav{
