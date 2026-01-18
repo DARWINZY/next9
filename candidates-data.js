@@ -42,4 +42,14 @@ window.CANDIDATES = [
     achievements: ["ตัวอย่างผลงาน 1"],
     education: ["ประวัติการศึกษา 1"]
   }
+    id: "4",
+    number: "4",
+    role: "ฝ่ายอะไรไม่รู้",
+    firstName: "ณัฐพงษ์",
+    lastName: "เรืองปัญญาวุณิ",
+    photo: "assets/candidates/4.webp",
+    achievementsTitle: "ผลงานที่เคยทำมา",
+    achievements: ["ตัวอย่างผลงาน 1"],
+    education: ["ประวัติการศึกษา 1"]
+  }
 ];
