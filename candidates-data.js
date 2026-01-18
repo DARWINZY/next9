@@ -42,6 +42,7 @@ window.CANDIDATES = [
     achievements: ["ตัวอย่างผลงาน 1"],
     education: ["ประวัติการศึกษา 1"]
   }
+  {
     id: "4",
     number: "4",
     role: "ฝ่ายอะไรไม่รู้",
