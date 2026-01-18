@@ -282,48 +282,27 @@ h2, h3{
   .btn{width:100%}
 }
 /* -------- Popup (index only) -------- */
-.popup{
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 9999;
-}
-
-.popup.show{ display: block; }
-
-.popup-backdrop{
-  position: absolute;
-  inset: 0;
-  background: rgba(17,24,39,.55);
-}
-
+.popup{ position:fixed; inset:0; display:none; z-index:9999; }
+.popup.show{ display:block; }
+.popup-backdrop{ position:absolute; inset:0; background:rgba(17,24,39,.55); }
 .popup-card{
-  position: relative;
-  width: min(520px, calc(100% - 24px));
-  margin: 0 auto;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  overflow: hidden;
+  position:relative;
+  width:min(520px, calc(100% - 24px));
+  margin:0 auto;
+  top:50%;
+  transform:translateY(-50%);
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  overflow:hidden;
 }
-
-.popup-img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
+.popup-img{ width:100%; height:auto; display:block; }
 .popup-close{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: rgba(255,255,255,.95);
-  cursor: pointer;
-  font-size: 18px;
+  position:absolute; top:10px; right:10px;
+  width:40px; height:40px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  background:rgba(255,255,255,.95);
+  cursor:pointer;
+  font-size:18px;
 }

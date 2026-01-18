@@ -51,8 +51,8 @@ document.addEventListener("click", async (e) => {
     }
   }
 });
-// --- Index popup: show every time (refresh / re-open / revisit) ---
-(() => {
+// --- Index popup: show every time (refresh / revisit) ---
+document.addEventListener("DOMContentLoaded", () => {
   const path = location.pathname.split("/").pop() || "index.html";
   if (path !== "index.html") return;
 
@@ -70,13 +70,11 @@ document.addEventListener("click", async (e) => {
     document.body.style.overflow = "";
   }
 
-  // close when clicking X or backdrop
   popup.addEventListener("click", (e) => {
     if (e.target.closest("[data-popup-close]")) closePopup();
   });
 
-  // close with ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && popup.classList.contains("show")) closePopup();
   });
-})();
+});
