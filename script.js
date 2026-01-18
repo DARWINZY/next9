@@ -57,30 +57,26 @@ document.addEventListener("click", async (e) => {
   if (path !== "index.html") return;
 
   const KEY = "next9_popup_closed";
-
   const popup = document.getElementById("welcomePopup");
   if (!popup) return;
 
-  // show only if not closed in this session
   if (sessionStorage.getItem(KEY) !== "1") {
     popup.classList.add("show");
     popup.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden"; // lock scroll while popup open
+    document.body.style.overflow = "hidden";
   }
 
-  function closePopup() {
+  function closePopup(){
     popup.classList.remove("show");
     popup.setAttribute("aria-hidden", "true");
     sessionStorage.setItem(KEY, "1");
     document.body.style.overflow = "";
   }
 
-  // close when clicking X or backdrop
   popup.addEventListener("click", (e) => {
     if (e.target.closest("[data-popup-close]")) closePopup();
   });
 
-  // close with ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && popup.classList.contains("show")) closePopup();
   });

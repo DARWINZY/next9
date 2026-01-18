@@ -286,7 +286,7 @@ h2, h3{
   position: fixed;
   inset: 0;
   display: none;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .popup.show{ display: block; }
@@ -304,7 +304,7 @@ h2, h3{
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid #e5e7eb;
   border-radius: 18px;
   overflow: hidden;
 }
@@ -322,19 +322,8 @@ h2, h3{
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.9);
+  border: 1px solid #e5e7eb;
+  background: rgba(255,255,255,.95);
   cursor: pointer;
   font-size: 18px;
-  color: var(--text);
-}
-
-.popup-close:hover{
-  background: var(--surface);
-}
-
-@media (max-width: 720px){
-  .popup-card{
-    width: min(420px, calc(100% - 20px));
-  }
 }
