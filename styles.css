@@ -445,8 +445,12 @@ h2, h3{
 /* ===== Candidates cards (photo + nameplate) ===== */
 .candidate-grid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:16px;
+
+  /* 🔴 ตัวแก้ปัญหาหลัก */
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px){
@@ -530,4 +534,17 @@ h2, h3{
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+}
+@media (max-width: 1200px){
+  .candidate-grid{
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 900px){
+  .candidate-grid{
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
 }
