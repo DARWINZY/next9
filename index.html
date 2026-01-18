@@ -138,6 +138,23 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- Popup: show only on first open of index per session -->
+  <div class="popup" id="welcomePopup" aria-hidden="true">
+    <div class="popup-backdrop" data-popup-close></div>
+
+    <div class="popup-card" role="dialog" aria-modal="true" aria-label="ประกาศ">
+      <button class="popup-close" type="button" aria-label="ปิด" data-popup-close>✕</button>
+
+      <img
+        class="popup-img"
+        src="assets/img/popup.webp"
+        alt="ประกาศจากพรรค next9"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
