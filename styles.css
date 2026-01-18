@@ -306,3 +306,50 @@ h2, h3{
   cursor:pointer;
   font-size:18px;
 }
+/* ---- Social cards (contact) ---- */
+.social-card{
+  display:block;
+  padding:16px;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  background: var(--card);
+  transition: transform .06s ease, background .2s ease;
+}
+.social-card:hover{
+  background: var(--surface);
+}
+.social-card:active{
+  transform: translateY(1px);
+}
+
+.social-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.social-icon{
+  width:40px;
+  height:40px;
+  flex: 0 0 40px;
+  display:block;
+}
+
+.social-title{
+  font-weight:700;
+  font-size:14px;
+  color: var(--text);
+}
+
+.social-handle{
+  font-weight:500;
+  font-size:13px;
+  color: var(--muted);
+  margin-top:2px;
+}
+
+.social-hint{
+  margin-top:10px;
+  font-size:12px;
+  color: var(--muted);
+}
