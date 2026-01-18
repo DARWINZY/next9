@@ -78,3 +78,121 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && popup.classList.contains("show")) closePopup();
   });
 });
+// ===== Candidates page: render cards + fullscreen profile modal =====
+document.addEventListener("DOMContentLoaded", () => {
+  const path = location.pathname.split("/").pop() || "index.html";
+  if (path !== "candidates.html") return;
+
+  const data = window.CANDIDATES || [];
+  const grid = document.getElementById("candidateGrid");
+  const modal = document.getElementById("profileModal");
+  const content = document.getElementById("profileContent");
+
+  if (!grid || !modal || !content) return;
+
+  // Render candidate cards
+  grid.innerHTML = data.map(c => `
+    <div class="candidate-card" role="button" tabindex="0" data-open-candidate="${c.id}">
+      <span class="tag red candidate-role">${escapeHtml(c.role)}</span>
+      <div class="candidate-badge">${escapeHtml(c.number || "")}</div>
+
+      <img class="candidate-photo" src="${escapeAttr(c.photo)}" alt="${escapeAttr(c.firstName)} ${escapeAttr(c.lastName)}">
+
+      <div class="nameplate">
+        <div class="name-first">${escapeHtml(c.firstName)}</div>
+        <div class="name-last">${escapeHtml(c.lastName)}</div>
+      </div>
+    </div>
+  `).join("");
+
+  function openProfile(id){
+    const c = data.find(x => x.id === id);
+    if (!c) return;
+
+    content.innerHTML = `
+      <!-- การ์ดรูปแบบเดียวกับ candidate card -->
+      <div class="candidate-card" style="max-width:520px;margin:8px auto 0;">
+        <span class="tag red candidate-role">${escapeHtml(c.role)}</span>
+        <div class="candidate-badge">${escapeHtml(c.number || "")}</div>
+        <img class="candidate-photo" src="${escapeAttr(c.photo)}" alt="${escapeAttr(c.firstName)} ${escapeAttr(c.lastName)}">
+        <div class="nameplate">
+          <div class="name-first">${escapeHtml(c.firstName)}</div>
+          <div class="name-last">${escapeHtml(c.lastName)}</div>
+        </div>
+      </div>
+
+      <!-- เลื่อนลงมาเจอชื่ออีกครั้ง -->
+      <div style="max-width:520px;margin:0 auto;">
+        <div class="profile-name-big">${escapeHtml(c.firstName)} ${escapeHtml(c.lastName)}</div>
+        <div class="profile-name-sub">${escapeHtml(c.role)} • เบอร์ ${escapeHtml(c.number || "-")}</div>
+      </div>
+
+      <!-- ผลงาน -->
+      <div class="profile-section">
+        <div class="pad">
+          <h3>${escapeHtml(c.achievementsTitle || "ผลงานที่เคยทำมา")}</h3>
+          <ul>
+            ${(c.achievements || []).map(x => `<li>${escapeHtml(x)}</li>`).join("") || "<li>ยังไม่มีข้อมูล</li>"}
+          </ul>
+        </div>
+      </div>
+
+      <!-- ประวัติการศึกษา -->
+      <div class="profile-section">
+        <div class="pad">
+          <h3>ประวัติการศึกษา</h3>
+          <ul>
+            ${(c.education || []).map(x => `<li>${escapeHtml(x)}</li>`).join("") || "<li>ยังไม่มีข้อมูล</li>"}
+          </ul>
+        </div>
+      </div>
+    `;
+
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeProfile(){
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  // Click to open
+  grid.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-open-candidate]");
+    if (!el) return;
+    openProfile(el.getAttribute("data-open-candidate"));
+  });
+
+  // Keyboard open (Enter/Space)
+  grid.addEventListener("keydown", (e) => {
+    const el = e.target.closest("[data-open-candidate]");
+    if (!el) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openProfile(el.getAttribute("data-open-candidate"));
+    }
+  });
+
+  // Close handlers
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-profile-close]")) closeProfile();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("show")) closeProfile();
+  });
+
+  // Helpers to prevent HTML injection
+  function escapeHtml(s){
+    return String(s ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+  function escapeAttr(s){ return escapeHtml(s); }
+});

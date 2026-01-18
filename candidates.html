@@ -56,46 +56,7 @@
         <span class="hint">ใส่ชื่อจริง + หน้าที่</span>
       </div>
 
-      <div class="candidate-grid">
-
-        <!-- ผู้สมัคร 1 -->
-        <div class="candidate-card">
-          <span class="tag red candidate-role">หัวหน้าพรรค</span>
-          <div class="candidate-badge">1</div>
-
-          <img class="candidate-photo" src="assets/candidates/1.webp" alt="ผู้สมัคร 1">
-
-          <div class="nameplate">
-            <div class="name-first">ชื่อจริง</div>
-            <div class="name-last">นามสกุล</div>
-          </div>
-        </div>
-
-        <!-- ผู้สมัคร 2 -->
-        <div class="candidate-card">
-          <span class="tag red candidate-role">รองหัวหน้า</span>
-          <div class="candidate-badge">2</div>
-
-          <img class="candidate-photo" src="assets/candidates/2.webp" alt="ผู้สมัคร 2">
-
-          <div class="nameplate">
-            <div class="name-first">ชื่อจริง</div>
-            <div class="name-last">นามสกุล</div>
-          </div>
-        </div>
-
-        <!-- ผู้สมัคร 3 -->
-        <div class="candidate-card">
-          <span class="tag red candidate-role">ฝ่ายกิจกรรม</span>
-          <div class="candidate-badge">3</div>
-
-          <img class="candidate-photo" src="assets/candidates/3.webp" alt="ผู้สมัคร 3">
-
-          <div class="nameplate">
-            <div class="name-first">ชื่อจริง</div>
-            <div class="name-last">นามสกุล</div>
-          </div>
-        </div>
+      <div class="candidate-grid" id="candidateGrid"></div>
 
       </div>
 
@@ -120,6 +81,19 @@
   </footer>
 
   <div class="toast" id="toast"></div>
-  <script src="script.js"></script>
+  <!-- Fullscreen Candidate Profile Modal -->
+  <div class="profile-modal" id="profileModal" aria-hidden="true">
+    <div class="profile-backdrop" data-profile-close></div>
+
+    <div class="profile-sheet" role="dialog" aria-modal="true" aria-label="โปรไฟล์ผู้สมัคร">
+      <button class="profile-close" type="button" aria-label="ปิด" data-profile-close>✕</button>
+
+      <div class="profile-content" id="profileContent"></div>
+    </div>
+  </div>
+
+  <script src="candidates-data.js?v=1"></script>
+  <script src="script.js?v=1"></script>
+
 </body>
 </html>
