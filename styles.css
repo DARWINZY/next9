@@ -442,3 +442,92 @@ h2, h3{
   font-weight:900;
   flex: 0 0 auto;
 }
+/* ===== Candidates cards (photo + nameplate) ===== */
+.candidate-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+
+@media (max-width: 900px){
+  .candidate-grid{ grid-template-columns: 1fr; }
+}
+
+.candidate-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius: 22px;
+  overflow:hidden;
+  background: var(--card);
+}
+
+/* รูปผู้สมัคร */
+.candidate-photo{
+  width:100%;
+  aspect-ratio: 4 / 5;           /* ปรับได้ เช่น 3/4 หรือ 1/1 */
+  object-fit: cover;
+  display:block;
+  background: var(--surface);
+}
+
+/* ป้ายมุมขวาบน (เช่น เลขผู้สมัคร) */
+.candidate-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  min-width:44px;
+  height:36px;
+  padding:0 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 12px;
+  background: rgba(255,255,255,.85);
+  border:1px solid var(--line);
+  font-weight:800;
+  color: var(--text);
+}
+
+/* แท็กตำแหน่ง ใช้ .tag.red แบบเดิม แต่จัดวางมุมซ้ายบน */
+.candidate-role{
+  position:absolute;
+  top:12px;
+  left:12px;
+}
+
+/* ป้ายชื่อด้านล่าง */
+.nameplate{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius: 18px;
+  padding:12px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+/* ชื่อจริง (ตัวใหญ่) */
+.name-first{
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+/* นามสกุล (ตัวเล็ก) */
+.name-last{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* เผื่อชื่อยาว */
+.name-first, .name-last{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
