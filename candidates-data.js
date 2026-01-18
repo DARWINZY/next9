@@ -52,5 +52,5 @@ window.CANDIDATES = [
     achievementsTitle: "ผลงานที่เคยทำมา",
     achievements: ["ตัวอย่างผลงาน 1"],
     education: ["ประวัติการศึกษา 1"]
-  },
+  }
 ];
